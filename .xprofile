@@ -1,0 +1,9 @@
+# background to black
+xsetroot -bg black
+
+# aliases
+alias ec="emacsclient -n"
+
+# xmodmap
+xmodmap ~/.xmodmap
+
