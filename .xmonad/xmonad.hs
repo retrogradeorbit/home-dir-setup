@@ -158,6 +158,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. controlMask .|. shiftMask, xK_p),
      spawn myScreenshot)
 
+  -- rotate display
+  , ((mod4Mask, xK_p),
+     spawn "bin/rotate-display.py")
+
   -- Mute volume.
   , ((0, xF86XK_AudioMute),
      spawn "amixer -q set Master toggle")
@@ -186,9 +190,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- , ((0, 0x1008FF16),
   --    spawn "")
 
-  -- -- Play/pause.
-  -- , ((0, 0x1008FF14),
-  --    spawn "")
+  -- Play/pause to toggle touchpad
+  , ((0, 0x1008FF14),
+     spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
 
   -- -- Audio next.
   -- , ((0, 0x1008FF17),
