@@ -1,9 +1,14 @@
 # background to black
 xsetroot -bg black
 
-# aliases
-alias ec="emacsclient -n"
+[ -d ~/config/fonts ] && xset +fp ~/config/fonts
+xset fp rehash
+xset b off
 
 # xmodmap
 xmodmap ~/.xmodmap
+
+export SDL_MOUSE_RELATIVE=0
+
+for i in `gnome-keyring-daemon`; do export $i; done
 
