@@ -173,7 +173,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Increase volume.
   , ((0, xF86XK_AudioRaiseVolume),
      spawn "amixer -q set Master 1dB+")
- 
+
   -- Mute volume.
   , ((modMask .|. controlMask, xK_m),
      spawn "amixer -q set Master toggle")
@@ -191,8 +191,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   --    spawn "")
 
   -- Play/pause to toggle touchpad
+  --, ((0, 0x1008FF14),
+  --   spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
+
+  -- Play/pause to toggle touchpad
   , ((0, 0x1008FF14),
-     spawn "synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')")
+     spawn "bin/toggle-touchpad.py")
 
   -- -- Audio next.
   -- , ((0, 0x1008FF17),
@@ -208,7 +212,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- Brightness up
   , ((0, xF86XK_MonBrightnessUp),
-     spawn "xbacklight -inc 10")    
+     spawn "xbacklight -inc 10")
 
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
