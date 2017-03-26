@@ -26,20 +26,21 @@
 (load-theme 'zenburn t)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-(iswitchb-mode 1)
+(ido-mode 1)
 (global-linum-mode 1)
 (delete-selection-mode 1)
 
-;; arrow keys
-(defun iswitchb-local-keys ()
-  (mapc (lambda (K)
-	  (let* ((key (car K)) (fun (cdr K)))
-	    (define-key iswitchb-mode-map (edmacro-parse-keys key) fun)))
-	'(("<right>" . iswitchb-next-match)
-	  ("<left>"  . iswitchb-prev-match)
-	  ("<up>"    . ignore)
-	  ("<down>"  . ignore))))
-(add-hook 'iswitchb-define-mode-map-hook 'iswitchb-local-keys)
+;; no tabs by default. modes that really need tabs should enable
+;; indent-tabs-mode explicitly. makefile-mode already does that, for
+;; example.
+(setq-default indent-tabs-mode nil)
+
+;; if indent-tabs-mode is off, untabify before saving
+(add-hook 'before-save-hooks
+          (lambda () (if (not indent-tabs-mode)
+                         (untabify (point-min) (point-max)))))
+
+(add-hook 'before-save-hooks 'delete-trailing-whitespace)
 
 ;; paredit on for clojure
 (defun turn-on-paredit () (paredit-mode 1))
@@ -72,7 +73,10 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("0e219d63550634bc5b0c214aced55eb9528640377daf486e13fb18a32bf39856" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" default))))
+    ("0e219d63550634bc5b0c214aced55eb9528640377daf486e13fb18a32bf39856" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" default)))
+ '(package-selected-packages
+   (quote
+    (php+-mode dockerfile-mode cider zenburn-theme yaml-mode sass-mode rainbow-delimiters php-mode paredit multiple-cursors markdown-mode magit hy-mode expand-region elixir-mode clojure-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
