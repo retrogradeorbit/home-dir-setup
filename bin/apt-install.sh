@@ -19,3 +19,6 @@ apt-get install xbacklight
 
 # you are going to need these to install emacs from source
 apt-get install git libxaw7-dev libjpeg-dev libgif-dev libtiff-dev
+
+# extra desktop utilities
+apt-get install xscreensaver
