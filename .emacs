@@ -36,11 +36,19 @@
 (setq-default indent-tabs-mode nil)
 
 ;; if indent-tabs-mode is off, untabify before saving
-(add-hook 'before-save-hooks
-          (lambda () (if (not indent-tabs-mode)
-                         (untabify (point-min) (point-max)))))
+;; (add-hook 'before-save-hook
+;;           (lambda () (if (not indent-tabs-mode)
+;;                          (untabify (point-min) (point-max)))))
 
-(add-hook 'before-save-hooks 'delete-trailing-whitespace)
+(add-hook 'before-save-hook
+          'untabify)
+
+;(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook
+          'whitespace-cleanup)
+
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace)
 
 ;; paredit on for clojure
 (defun turn-on-paredit () (paredit-mode 1))
@@ -76,7 +84,7 @@
     ("0e219d63550634bc5b0c214aced55eb9528640377daf486e13fb18a32bf39856" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" default)))
  '(package-selected-packages
    (quote
-    (php+-mode dockerfile-mode cider zenburn-theme yaml-mode sass-mode rainbow-delimiters php-mode paredit multiple-cursors markdown-mode magit hy-mode expand-region elixir-mode clojure-mode))))
+    (go-mode php+-mode dockerfile-mode cider zenburn-theme yaml-mode sass-mode rainbow-delimiters php-mode paredit multiple-cursors markdown-mode magit hy-mode expand-region elixir-mode clojure-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
