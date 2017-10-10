@@ -1,10 +1,10 @@
 add-apt-repository ppa:webupd8team/java
 
 apt-get update
-apt-get install oracle-java9-installer build-essential emacs \
-	libpango1.0-0 libappindicator1 git pulseaudio dkms \
-	xmonad libghc-xmonad-contrib-dev xmobar stalonetray \
-	suckless-tools scrot cabal-install xcompmgr
+apt-get -y install oracle-java8-installer build-essential emacs \
+        libpango1.0-0 libappindicator1 git pulseaudio dkms \
+        xmonad libghc-xmonad-contrib-dev xmobar stalonetray \
+        suckless-tools scrot cabal-install xcompmgr
 
 # xmonad stuff
 cabal update
