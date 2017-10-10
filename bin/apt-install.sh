@@ -22,3 +22,8 @@ apt-get -y install git libxaw7-dev libjpeg-dev libgif-dev libtiff-dev
 
 # extra desktop utilities
 apt-get -y install xscreensaver curl
+
+# install leiningen
+curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein > /usr/local/bin/lein
+chmod a+x /usr/local/bin/lein
+su crispin -c lein
