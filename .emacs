@@ -91,3 +91,22 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(require 'unicode-fonts)
+(require 'persistent-soft) ; To cache the fonts and reduce load time
+(unicode-fonts-setup)
+
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
+(require 'mu4e)
+(setq
+   message-send-mail-function   'smtpmail-send-it
+   smtpmail-smtp-server         "localhost"
+   smtpmail-local-domain        "procrustes.net"
+
+   ;; so your plaintext emails wrap nicely in other clients.
+   mu4e-compose-format-flowed t
+
+   mu4e-use-fancy-chars t
+   mu4e-view-show-images t
+   mu4e-view-show-addresses t
+   )
